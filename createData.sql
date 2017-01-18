@@ -1,0 +1,5 @@
+CREATE TABLE public_user_information AS (SELECT * FROM weile.PUBLIC_USER_INFORMATION);
+CREATE TABLE public_are_friends AS (SELECT * FROM weile.PUBLIC_ARE_FRIENDS);
+CREATE TABLE public_photo_information AS (SELECT * FROM weile.PUBLIC_PHOTO_INFORMATION
+CREATE TABLE public_tag_information AS (SELECT * FROM weile.PUBLIC_TAG_INFORMATION;
+CREATE TABLE public_event_information AS (SELECT * FROM weile.PUBLIC_EVENT_INFORMATION);
