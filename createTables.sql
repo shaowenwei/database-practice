@@ -28,10 +28,10 @@ CREATE TRIGGER fri_trigger
 BEFORE INSERT ON FRIENDS
 FOR EACH ROW	
 	BEGIN
-		IF :new.USER1_ID > new.USER2_ID THEN							--- the new row we are inserting
+		IF :new.USER1_ID > :new.USER2_ID THEN							--- the new row we are inserting
 			TEMP := :new.USER2_ID;
-			new.USER2_ID:= :new.USER1_ID;
-			new.USER1_ID:= :TEMP;
+			:new.USER2_ID:= :new.USER1_ID;
+			:new.USER1_ID:= TEMP;
 		END IF;
 	END;
 /
