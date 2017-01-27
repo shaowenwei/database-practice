@@ -24,8 +24,8 @@ CREATE TABLE FRIENDS(
 	CONSTRAINT CHECK_SAME CHECK(USER1_ID < USER2_ID)
 );
 
-CREATE TRIGGER trigger_name --- this is a comment
-BEFORE INSERT ON table
+CREATE TRIGGER fri_trigger --- this is a comment
+BEFORE INSERT ON FRIENDS
 FOR EACH ROW	
 NUMBER TEMP; --- local variable for each row, no ':' when using it
 	BEGIN
