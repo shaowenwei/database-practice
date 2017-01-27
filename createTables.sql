@@ -24,17 +24,20 @@ CREATE TABLE FRIENDS(
 	CONSTRAINT CHECK_SAME CHECK(USER1_ID < USER2_ID)
 );
 
-CREATE TRIGGER fri_trigger 
-BEFORE INSERT ON FRIENDS
+CREATE TRIGGER trigger_name --- this is a comment
+BEFORE INSERT ON table
 FOR EACH ROW	
+NUMBER TEMP; --- local variable for each row, no ':' when using it
 	BEGIN
-		IF :new.USER1_ID > :new.USER2_ID THEN							--- the new row we are inserting
-			TEMP := :new.USER2_ID;
-			:new.USER2_ID:= :new.USER1_ID;
-			:new.USER1_ID:= TEMP;
-		END IF;
+		IF :new.USER1_ID > :new.USER2_ID THEN	--- :new is a bind variable referring to 								--- the new row we are inserting
+			TEMP := :new.USER2_ID;	--- make sure to have ':' right before '='
+			:new.USER2_ID := :new.USER1_ID;
+			:new.USER1_ID := :TEMP;
+			--- whatever;
+		END IF;		
 	END;
 /
+--- functionally equivalent to '.\n run;' in spec
 
 CREATE TABLE CITIES(
 	CITY_ID INTEGER,
