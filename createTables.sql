@@ -25,14 +25,15 @@ CREATE TABLE FRIENDS(
 );
 
 CREATE TRIGGER fri_trigger --- this is a comment
-BEFORE INSERT ON FRIENDS
-FOR EACH ROW	
-DECLARE TEMP NUMBER; --- local variable for each row, no ':' when using it
+	BEFORE INSERT ON FRIENDS
+	FOR EACH ROW	
+DECLARE 
+	TEMP NUMBER; --- local variable for each row, no ':' when using it
 	BEGIN
 		IF :new.USER1_ID > :new.USER2_ID THEN	--- :new is a bind variable referring to 								--- the new row we are inserting
 			TEMP := :new.USER2_ID;	--- make sure to have ':' right before '='
 			:new.USER2_ID := :new.USER1_ID;
-			:new.USER1_ID := :TEMP;
+			:new.USER1_ID := TEMP;
 			--- whatever;
 		END IF;		
 	END;
